@@ -1,0 +1,205 @@
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #fff;
+    background-color: #333;
+    margin: 0;
+}
+
+h1, h2, h3 {
+    text-align: center;
+}
+
+
+header {
+    position: fixed;
+    z-index: 1000;
+    height: 60px;
+    width: 100%;
+    align-items: center;
+    padding: 0 5em 0 5em;
+    border-bottom: 4px solid #4282e3;
+    background-color: #333;
+    display: flex;
+    box-shadow: 5px 5px 5px black;
+}
+
+.content__area {
+    padding-top: 75px;
+    width: 75%;
+    height: 95vh;
+    margin: auto;
+    /* background-color: rgb(57, 57, 57); */
+    border-radius: 5px;
+}
+
+.resources {
+    width: 100;
+    padding: 0 1em 1em 1em;
+    background-color: rgb(57, 57, 57);
+    text-align: center;
+    line-height: 2em;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px black;
+}
+
+.resources > img {
+    height: 25px;
+    padding: 0;
+    margin:0;
+}
+
+.resources button {
+    font-size: 1.5vh;
+    width: 25vw;
+    height: 10vh;
+}
+
+.popassign {
+    margin-left: 5em;
+    margin-right: 5em;
+}
+
+.popup {
+    position: fixed;
+    padding: 1em;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 65%;
+    height: 15%;
+    background-color: #333;
+    border: 2px solid red;
+    box-shadow: 5px 5px 5px black;
+}
+
+.popup p {
+    margin: 2em;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+
+.popassign button {
+    width: 5vw;
+    height: 3vh;
+    text-align: center;
+}
+
+.collecting {
+    border: 4px dashed green;
+}
+
+/* .collecting {
+    box-sizing: border-box;
+    background-image: linear-gradient(to right, green 25px, transparent 50px), linear-gradient(to bottom, green 25px, transparent 50px), linear-gradient(to right, green 25px, transparent 50px), linear-gradient(to bottom, green 25px, transparent 50px);
+    background-size: 100% 4px, 4px 100%, 100% 4px, 4px 100%;
+    background-repeat: no-repeat;
+    background-position: -50px 0px, right -50px, 200px bottom, 0px 200px; 
+    animation: border 3s linear infinite; 
+  }
+  @keyframes border {
+    20% {
+      background-position: 150px 0px, right -50px, 200px bottom, 0px 200px;
+    }
+    25% {
+      background-position: 200px 0px, right 0px, 200px bottom, 0px 200px;
+    }
+    45% {
+      background-position: 200px 0px, right 150px, 200px bottom, 0px 200px;
+    }
+    50% {
+      background-position: 200px 0px, right 200px, 150px bottom, 0px 200px;
+    }
+    70% {
+      background-position: 200px 0px, right 200px, 0px bottom, 0px 200px;
+    }
+    75% {
+      background-position: 200px 0px, right 200px, -50px bottom, 0px 150px;
+    }
+    95% {
+      background-position: 200px 0px, right 200px, -50px bottom, 0px 0px;
+    }
+    95.1% {
+      background-position: -50px 0px, right 200px, -50px bottom, 0px 0px;
+    }
+    100% {
+      background-position: 0px 0px, right 200px, -50px bottom, 0px -50px;
+    }
+} */
+
+button img {
+    height: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.log {
+    margin-top: 1em;
+}
+
+.tools {
+    width: 80%;
+    text-align: center;
+    display: flex;
+    margin: auto;
+    justify-items: stretch;
+    justify-content: center;
+}
+
+.tools .button {
+    font-size: 1vh;
+    width: 10vw;
+    padding: 1em;
+}
+
+.tab {
+    margin-top: 1em;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #4282e3;
+    box-shadow: 5px 5px 5px black;
+}
+
+.tab h3 {
+    color: black;
+    font-weight: 100;
+    background-color: inherit;
+    border: none;
+    outline: none;
+    font-size: 17px;
+}
+
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+.tab button:hover {
+    background-color: #2d599c;
+}
+
+footer {
+    background-color: #333;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid #2d599c;
+    box-shadow: 5px 5px 5px black;
+}

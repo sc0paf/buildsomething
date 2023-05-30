@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build Something!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div id="app">
+
+        <header>
+            Content? <button @click="killsave()">Kill save</button>
+        </header>
+
+        <div class="content__area">
+                        <!-- Resources -->
+                    <div class="tab"><h3>Resources</h3></div>
+                        <div class="resources" style="line-height: 3em;">
+                            <img src="assets/resources/Wood.png"> Wood: {{player.wood.toFixed(0)}}<br>
+                            <img src="assets/resources/Stone.png"> Stone: {{player.stone.toFixed(0)}}<br>
+                            <img src="assets/resources/Coin.png"> Gold: {{player.gold.toFixed(0)}}<br>
+                            <img src="assets/resources/Bread.png"> Food: {{player.food.toFixed(0)}}<br>
+                        </div>
+        
+            <div class="tab">
+                <button class="tablinks" @click="tab = 'resources'">Produce</button>
+                <button class="tablinks" @click="tab = 'tools'">Tools</button>
+                <button class="tablinks" @click="tab = 'pop'">Population</button>
+            </div>
+
+            <!-- production -->
+            <div class="resources" v-if="tab == 'resources'">
+                <h2>Collect Resources:</h2>
+
+                <button @click="active == 'wood' ? active = '' : active = 'wood'" :class="[active == 'wood' ? 'collecting' : '', 'gather']">
+                    <img src="assets/resources/Wood.png"><br>
+                    Chop
+                </button>
+
+                <button @click="active == 'stone' ? active = '' : active = 'stone'" :class="[active == 'stone' ? 'collecting' : '', 'gather']">
+                    <img src="assets/resources/Stone.png"> <br>
+                    Mine
+
+                </button>
+
+                <button @click="active == 'gold' ? active = '' : active = 'gold'" :class="[active == 'gold' ? 'collecting' : '', 'gather']">
+                    <img src="assets/resources/Coin.png"> <br>
+                    Steal
+                </button>
+
+                <button @click="active == 'food' ? active = '' : active = 'food'" :class="[active == 'food' ? 'collecting' : '', 'gather']">
+                    <img src="assets/resources/Bread.png"> <br>
+                    Gather
+                </button>
+            </div>
+
+            <!-- Tools -->
+            <div class="resources" v-if="tab == 'tools'">
+                <h2 @click="tools = !tools">Tools</h2>
+                <div style="display: inline-flex;">
+                    <!-- draw the upgrades -->
+                    <template v-for="upgrade in upgrades" :key="upgrade.title">                       
+                        <button style="height: auto;" @click="buyUpgrade(upgrade)">
+                            <b>{{upgrade.title}}</b>
+                            <hr width="30%">
+                            {{upgrade.effect}}
+                            <hr width="30%">
+                            <b>Cost:</b>
+                            <li style="list-style-type:none;margin:0;padding:0;" v-for="(costs, key) in upgrade.cost"> {{costs}} {{key}}
+                            </li>
+                        </button>
+                    </template>
+                </div>
+            </div>
+
+            <!-- population -->
+            <div class="resources" v-if="tab == 'pop'">
+                <h2>Population</h2>
+                You currently have {{player.population.total}} people
+                <button @click="player.population.amt++">+</button><button @click="player.population.amt--">-</button>
+                <hr width="30%" dashed>
+                <p />You have {{player.population.amt}} free to assign
+                <p />Choose where to assign them:
+                <div class="popassign">
+                    <span style="float:left;">Wood</span>
+                    <button class="assignment" @click="assign(true, 'wood')">+</button>
+                    <button class="assignment" @click="assign(false, 'wood')">-</button> 
+                    <span style="float:right;">{{player.population.wood}} / {{player.population.amt}}</span><br>
+
+                    <span style="float:left;">Stone</span>
+                    <button class="assignment" @click="assign(true, 'stone')">+</button>
+                    <button class="assignment" @click="assign(false, 'stone')">-</button> 
+                    <span style="float:right;">{{player.population.stone}} / {{player.population.amt}}</span><br>
+
+                    <span style="float:left;">Gold</span>
+                    <button class="assignment" @click="assign(true, 'gold')">+</button>
+                    <button class="assignment" @click="assign(false, 'gold')">-</button> 
+                    <span style="float:right;">{{player.population.gold}} / {{player.population.amt}}</span><br>
+
+                    <span style="float:left;">Food</span>
+                    <button class="assignment" @click="assign(true, 'food')">+</button>
+                    <button class="assignment" @click="assign(false, 'food')">-</button> 
+                    <span style="float:right;">{{player.population.food}} / {{player.population.amt}}</span><br>
+                </div>
+            </div>
+
+                <div class="tab"><h3>Event Log</h3></div>
+                <div class="resources" id="log" v-html="eventLog">
+                    <button @click="dispErr('Things arent right')">clickme</button>
+                    
+            </div>
+        </div>
+
+
+        <footer>
+            <!-- Playtime {{player.playtime.toFixed(0)}} -->
+            {{new Date(player.playtime * 1000).toISOString().slice(11, 19)}}
+        </footer>
+        <transition>
+            <div class="popup" v-if="ePop">
+                <b>Error<span style="float:right; cursor: pointer; width: 1.3em; height: 1.3em;" @click="ePop = false">x</span></b>
+                <hr style="width: 100%; border: 1px solid red;">
+                {{errContents}}
+            </div>
+        </transition>
+
+    </div>
+
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/main.js" type="module"></script>
+</body>
+</html>
